@@ -16,6 +16,9 @@ public class PA2017_Buscaminas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Buscaminas ventana = new Buscaminas();
+        ventana.setVisible(true);
+        
     }
     
 }

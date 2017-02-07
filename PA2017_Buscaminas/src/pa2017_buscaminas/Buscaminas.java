@@ -13,21 +13,34 @@ import javax.swing.JButton;
  */
 public class Buscaminas extends javax.swing.JFrame {
 
+    int numeroBombas = 10;
+    int numeroCuadros = 10;
+    
+    
     /**
      * Creates new form Buscaminas
      */
     public Buscaminas() {
-        initComponents();
-        
+        initComponents();    
+        iniciaInterfaz();
         creaTablero();
-        
-        matriz();
-        
+        //colocarBombas();
+        //clickBoton();
+        //contarBombas();
+        //RevelarMultiplesCasillas();
+        //perder();
+        //ganar();
+        //reset();
+       
     }
     
-    public void matriz(){
-        
-        
+    public void iniciaInterfaz(){
+        lblNumeroBombas.setText(""+numeroBombas);
+        lblTiempo.setText("000");
+        btnReset.setText("Reset");
+    }
+    
+    public void matriz(){      
         
     }
     
@@ -43,7 +56,7 @@ public class Buscaminas extends javax.swing.JFrame {
                 
                 btn.setBounds(i*20, j*20, 20, 20);
         
-                jPanel1.add(btn);
+                panelCasillas.add(btn);
                 
                 //tablero[i][j]
             }
@@ -63,27 +76,27 @@ public class Buscaminas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        lblNumeroBombas = new javax.swing.JLabel();
+        btnReset = new javax.swing.JButton();
+        lblTiempo = new javax.swing.JLabel();
+        panelCasillas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Rogelio");
+        lblNumeroBombas.setText("Rogelio");
 
-        jButton1.setText("jButton1");
+        btnReset.setText("jButton1");
 
-        jLabel2.setText("jLabel2");
+        lblTiempo.setText("jLabel2");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelCasillasLayout = new javax.swing.GroupLayout(panelCasillas);
+        panelCasillas.setLayout(panelCasillasLayout);
+        panelCasillasLayout.setHorizontalGroup(
+            panelCasillasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 248, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelCasillasLayout.setVerticalGroup(
+            panelCasillasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 383, Short.MAX_VALUE)
         );
 
@@ -94,13 +107,13 @@ public class Buscaminas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCasillas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblNumeroBombas)
                         .addGap(32, 32, 32)
-                        .addComponent(jButton1)
+                        .addComponent(btnReset)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
+                        .addComponent(lblTiempo)))
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -108,11 +121,11 @@ public class Buscaminas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel2))
+                    .addComponent(lblNumeroBombas)
+                    .addComponent(btnReset)
+                    .addComponent(lblTiempo))
                 .addGap(30, 30, 30)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCasillas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -155,9 +168,9 @@ public class Buscaminas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JLabel lblNumeroBombas;
+    private javax.swing.JLabel lblTiempo;
+    private javax.swing.JPanel panelCasillas;
     // End of variables declaration//GEN-END:variables
 }
