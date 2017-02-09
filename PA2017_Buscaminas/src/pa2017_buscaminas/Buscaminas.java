@@ -5,6 +5,8 @@
  */
 package pa2017_buscaminas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -13,9 +15,11 @@ import javax.swing.JButton;
  */
 public class Buscaminas extends javax.swing.JFrame {
 
-    int numeroBombas = 10;
-    int numeroCuadros = 10;
-    
+    int numeroBombas = 30;
+    int filas = 10;
+    int columnas = 10;   
+    int[][] tablero;
+    JButton[][] botones;
     
     /**
      * Creates new form Buscaminas
@@ -24,7 +28,9 @@ public class Buscaminas extends javax.swing.JFrame {
         initComponents();    
         iniciaInterfaz();
         creaTablero();
-        //colocarBombas();
+        
+        colocarBombas();
+        imprimeTablero();
         //clickBoton();
         //contarBombas();
         //RevelarMultiplesCasillas();
@@ -40,31 +46,73 @@ public class Buscaminas extends javax.swing.JFrame {
         btnReset.setText("Reset");
     }
     
-    public void matriz(){      
-        
+    public void imprimeTablero(){      
+         for(int fila=0; fila < filas; fila++){
+            
+            for(int columna=0; columna < columnas; columna++){
+                System.out.print(tablero[fila][columna]+" ");
+            }
+            System.out.println("");
+        }
     }
     
     public void creaTablero(){
       
-        int lado = 10;
-        int[][] tablero = new int[5][5];
+        tablero = new int[filas][columnas];
+        botones = new JButton[filas][columnas];
         
-        for(int i=0; i < lado; i++){
+        for(int fila=0; fila < filas; fila++){
             
-            for(int j=0; j < lado; j++){
-                JButton btn = new JButton();           
+            for(int columna=0; columna < columnas; columna++){
+                botones[fila][columna] = new JButton();           
                 
-                btn.setBounds(i*20, j*20, 20, 20);
+                botones[fila][columna].setBounds(fila*20, columna*20, 20, 20);
         
-                panelCasillas.add(btn);
+                botones[fila][columna].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JButton btn = (JButton) e.getSource() ;
+                        
+                        int fila_presionada=0;
+                        int columna_presionada=0;
+                        
+                        for(int fila=0; fila < filas; fila++){
+                            for(int columna=0; columna < columnas; columna++){
+                                if(btn == botones[fila][columna]){
+                                    fila_presionada=fila;
+                                    columna_presionada=columna;
+                                }                
+                            }            
+                        }  
+                        
+                        btn.setText(""+tablero[fila_presionada][columna_presionada]);
+                                
+                        
+                    }
+                });
+                
+                panelCasillas.add(botones[fila][columna]);
                 
                 //tablero[i][j]
             }
         }
         
         
-        
-        
+      
+    }
+    
+    public void colocarBombas(){
+         for(int i=0; i < numeroBombas; i++){
+            int fila = (int) (Math.random() * filas);
+            int columna = (int) (Math.random() * columnas);
+            
+            if(tablero[fila][columna]==1){
+                i--;
+            }else{
+                tablero[fila][columna]=1;
+            }
+            
+         }
     }
 
     /**
@@ -86,6 +134,11 @@ public class Buscaminas extends javax.swing.JFrame {
         lblNumeroBombas.setText("Rogelio");
 
         btnReset.setText("jButton1");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         lblTiempo.setText("jLabel2");
 
@@ -131,6 +184,10 @@ public class Buscaminas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
